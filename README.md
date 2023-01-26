@@ -3,10 +3,11 @@
 
 ### What is a compiler
   >program that transform source code to target lanuge <br>
-
+<pre>
 High level ------------- Low level <br>
-Closer to humans        closer to hardware <br>
+Closer to humans  ------      closer to hardware <br>
 C, C++, Python    ------      IA32, IA62<br>
+</pre>
 
 ### Compileer
 Source Text -> Compiler [front end(analysis] - [semantics] - [back end (synthesis)] -> executable code
@@ -39,6 +40,42 @@ Source Text -> [front end(analysis] - [semantics] - [execution engine] -> output
 
 ### Example of tokenization
 ```x = b * b - 4``` === to lexeme tokenization```<ID,'x'> <EQ> <ID, 'b'> <MULT> <ID, 'b'> <MINUS> <INT, 4> ```
+for IDs the check is letter(letter|digit)^*^
 
-fuck 
-                  homie
+### Expansion of compentns in a tree
+Must take into consideration of order of presesedence 
+>             =
+>            /  \
+>          x      -
+>               /    \
+>              *     4
+>            /   \
+>          b      b  
+
+<br>
+at each phase the data type is examined to ensure semantic analysis. <br> Ensure that data types are comparable with their expected operators
+
+automatic type castings vs explicit typecasting vs implicit conversion<br>
+At this state the compiler generates temporary variables to store the data in compliation of the equation
+
+### Interpetation of expression
+temporary values are stored during calculation<br>
+R2 = b * b
+R1 = R2 - 4
+R2 = x * R1
+
+### Assembly Code Actions 
+Moving the values within the regestires<br>
+* Mov Rs, (sp+8)
+* SAL R2, 2
+* Mov R1, (sp+16)
+
+### Error Checking
+- Lexicial analysis 
+- Sysntax analysis
+- Semantica allanys
+
+
+### Assignment 
+Same research as 321 
+
