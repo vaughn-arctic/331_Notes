@@ -60,9 +60,9 @@ At this state the compiler generates temporary variables to store the data in co
 
 ### Interpetation of expression
 temporary values are stored during calculation<br>
-R2 = b * b
-R1 = R2 - 4
-R2 = x * R1
+R2 = b * b<br>
+R1 = R2 - 4<br>
+R2 = x * R1<br>
 
 ### Assembly Code Actions 
 Moving the values within the regestires<br>
