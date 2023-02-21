@@ -79,3 +79,64 @@ Moving the values within the regestires<br>
 ### Assignment 
 Same research as 321 
 
+# 20 FEB
+
+- dealing with back-tracking
+
+#### Deterministic solutions
+- left recersion
+  - easy to write
+  - Top down parsers cannot handle/ can lead to a non-termination state (any recuresion must be right recursion
+  - A -> A@ | B
+  - Rewrite 
+  - A -> BA' (where A' is new non terminal) 
+  - A' -> @A' | E (empty symbol) ..... (slide 24)-25 
+  
+  example <br> 
+  Expression E, Term T, Factor F, empty <br> 
+  E -> E + T | E - T | T .....(T is the B in this scenario)<br>
+  T -> T * F | T / F | F ......(F is the B in this scenario) <br> 
+  
+  moved to right recursion 
+  E -> TE' ......make it BA'<br> 
+  E' -> +TE' | - TE' | empty........make it A'@ for all @s<br>
+  T -> FT' ...... make it BA' <br>
+  T' -> *FT' | /FT' | empty........make it A'@ for all @s <br> <br><br> 
+
+  keep an eye out for not immediate grammers <br> 
+  S->Aa | B<br>
+  A -> Sc | D<br><br>
+  S->Aa -> Sca   or    A -> Sc -> Aac 
+  
+  
+  #### another example
+  - S->Aa | b
+  - A ->Ac | Sd | f
+  - S -> Aa -> Sda
+  <br> 
+  replace A -> Sd with A->Aad | bd
+  
+  ### Un class exercise
+  #### quetion 1 eliminate left recursion 
+  - T ->T*U | U 
+    - T-> UT' 
+    - T' -> *UT' | empty<br>
+    
+    
+    
+  - A -> A - (A) | int | int + A | int - A
+    - A ->intA' | int + AA' | int - AA'
+    - A' -> -(A) A' | empty<br>
+    
+    
+    
+  - S-> Aa | b
+  - A -> Ac | Sd | c
+    - replace A -> Sd with Aad | Ab
+    - so 
+    - A -> Ac | Aad | Ab | c
+    - A -> cA'
+    - A' ->  adA' | bA' | empty<br><br> 
+
+
+- left factoring 
