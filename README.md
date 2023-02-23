@@ -200,3 +200,19 @@ Same research as 321
   >     X             $                   x-> empty 
   >     $             $                 
  ~~~
+<br>
+### How to build parse trees
+#### First Sets 
+looking for terminal symbols, lol looking good 
+<img width="667" alt="Screen Shot 2023-02-22 at 3 29 31 PM" src="https://user-images.githubusercontent.com/70354960/220795017-3d330a69-e472-457a-adc0-72f904eca2fa.png">
+
+<br>
+Here's and example stupid
+~~~
+S->aABb
+S-> a
+A-> c | E
+B -> d|e
+
+~~~
+#### Following Sets
