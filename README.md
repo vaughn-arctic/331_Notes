@@ -122,6 +122,7 @@ Same research as 321
     - T-> UT' 
     - T' -> *UT' | empty<br>
     
+
     
     
   - A -> A - (A) | int | int + A | int - A
@@ -140,3 +141,62 @@ Same research as 321
 
 
 - left factoring 
+
+  # 22 Feb 
+  
+  ### Recursive Descent Pattern
+  > - a top down parsing method
+  > - use a set of mutually recursive procedure
+  > - using predictive parsing with lockahead sybmols to decide uses
+  
+  ### Stack Based Table-Driven Pasring
+  
+<img width="667" alt="Screen Shot 2023-02-22 at 2 34 50 PM" src="https://user-images.githubusercontent.com/70354960/220787677-65266392-2519-4d7f-8554-8378baea750c.png">
+
+  > use 3 tables
+  > Stack                   Lookahead     Parse-Table Lookup
+  > $S                        IF            M(S, IF( S->if E then S else S
+  > $S, else, s, then, e, if  IF           (push to stack in reverse order) 
+   > $S, else, s, then, e,    NUM          (pop last element if they last and get
+   
+  ###Example
+  ~~~
+  >     INT         *       +       (         )         $
+  >  E  TX                          TX
+  >  X                      +E                 empty     empty
+  >  T  int Y                       (E)
+  >  Y              *T     empty              empty     empty
+  ~~~
+  
+  <br> int + (int) + (int)$<br>
+  ~~~
+  >   Stack         Lookahead                   Rule
+  >   $E             INT                        E ->TX         
+  >     XT             INT                    T -> int Y
+  >     X, Y INT      INT                     (pop)
+  >     X, Y          +                 Y -> empty
+  >     X             +                  X ->  + E
+  >     E +           +                     (pop)
+  >     E             (                   E-> TX
+  >     X, T          (                   T-> (E)
+  >     X, ), E, (    (                   (pop)
+  >     X, ), E       int                 E-> TX
+  >     X, ), X, T    int                 T-> int Y
+  >     X, ), X, Y, int int             (pop)
+  >     X, ), x, y     )                y -> empty
+  >     x, ), x       )                 x -> empty
+  >     x, )          )                   (pop)
+  >     x             +                 x-> + E
+  >    E, +          +                   (pop)
+  >     E             (                 E -> TX 
+  >     X, T          (                   T-> (E)
+  >     X, ), E, (    (                   (pop)
+  >     X, ), E       int                 E-> TX 
+  >     X, ), X, T    int                 T-> int Y 
+  >     X, ), X, Y, int int             (pop)v
+  >     X, ), x, y     )                y -> empty 
+  >     x, ), x       )                 x -> empty 
+  >     x, )          )                   (pop) 
+  >     X             $                   x-> empty 
+  >     $             $                 
+ ~~~
