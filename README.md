@@ -32,11 +32,23 @@ Source Text -> [front end(analysis] - [semantics] - [execution engine] -> output
  - Consistent optimization (Can it optimize/reduce your code: looking for repeats of code ecevutions) 
 
 ### Phases of compilation
-1. scanner (lexical analysis)         <br> highlighting key words (i.e. int, char) <br> ``` a = a + b ```: need a token for each element(5 total tokens)  -> Token Stream
-2. parser (sytax analysis)         <br>    -> Parse tree
-3. Semantic Analysis and intermediate code generation <br> checks that statement is meanigful and correct <br> ```int a[n];``` : the n must be a constant in the allocation of space<br> ```a[i] = b``` : i must be within the range of the array<br> - >Abstract syntax tree
-4. Machine-independent code imporvement (optional) <br> optional optimization -> intermediate form 
-5. Target code generation    <br>namely assembley language ->target language
+1. scanner (lexical analysis)         <br> highlighting key words (i.e. int, char) <br> ``` a = a + b ```: need a token for each element(5 total tokens)  -> Token Stream 
+~~~ 
+grammer specifies token use and tokenization of syntax. 
+~~~
+3. parser (sytax analysis)         <br>    -> Parse tree
+ ~~~
+checking to see if the statement is meaningfully correct
+~~~
+4. Semantic Analysis and intermediate code generation <br> checks that statement is meanigful and correct <br> ```int a[n];``` : the n must be a constant in the allocation of space<br> ```a[i] = b``` : i must be within the range of the array<br> - >Abstract syntax tree
+~~~
+dealing with the meaning
+if array[10]...
+accessing array[15] is ok syntax-wise
+but does not make sense logically
+~~~
+6. Machine-independent code imporvement (optional) <br> optional optimization -> intermediate form 
+7. Target code generation    <br>namely assembley language ->target language
 
 ### Example of tokenization
 ```x = b * b - 4``` === to lexeme tokenization```<ID,'x'> <EQ> <ID, 'b'> <MULT> <ID, 'b'> <MINUS> <INT, 4> ```
@@ -74,6 +86,10 @@ Moving the values within the regestires<br>
 - Lexicial analysis 
 - Sysntax analysis
 - Semantica allanys
+
+### Context Free grammer
+terminal - cannot convert to anything else
+non terminals - end of the line stupid
 
 
 ### Assignment 
